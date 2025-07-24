@@ -1,0 +1,14 @@
+plugins {
+    id("java")
+    id 'java-library'
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    api 'com.google.guava:guava:32.1.1-jre' // exposed to app
+    implementation 'org.apache.commons:commons-lang3:3.12.0' // internal only
+}
