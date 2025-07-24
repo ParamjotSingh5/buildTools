@@ -70,3 +70,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
 }
 ```
+
+# Why This Matters:
+## Compilation Speed
+When you change an implementation dependency, only your module needs to recompile. With api, all modules that depend on yours must also recompile.
+## Encapsulation
+implementation hides internal details. If you later switch from Spring to another framework, dependent modules won't break because they never directly used Spring classes.
