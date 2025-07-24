@@ -10,6 +10,11 @@ A configuration initially defined in Gradle, this configuration marks/forces men
 
 In recent upgrades, Gradle renamed `compile` configuration with `api` keyword, just to trigger discussions, motivation about migrating from `compile` configuration and migrating not transitively required dependencies to `implimentation` configuration.
 
+- **Visibility**: The dependency is **exposed** to other modules that depend on your module.
+- **Usage**: The dependency is **included** in the classpath of both your module and any consuming modules.
+- **Compilation**: Needed for both compile and runtime.
+- **Consumers**: Other modules **can directly use** classes from this dependency if they depend on your module.
+
 ```groovy
 compile('org.apache.commons:commons-lang3:3.12.0') // Exposed to consumers, transitive
 ```
@@ -36,6 +41,11 @@ dependencies {
 # Implementation:
 
 This was the real change and improvement introduced with recent upgrades in Gradle configurations. It does not exposes your module dependencies to dependent modules.
+
+- **Visibility**: The dependency is **internal** to your module.
+- **Usage**: The dependency is **not exposed** to modules that depend on your module.
+- **Compilation**: Your module can use the dependency at **compile time and runtime**.
+- **Consumers**: Other modules that depend on your module **cannot access** this dependency.
 
 ```groovy
 // Module A - Better encapsulation
